@@ -2,6 +2,7 @@ package edu.spring.mvc.controller;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,17 +17,21 @@ import edu.spring.mvc.model.Student;
 @RequestMapping(value = "/student")
 public class StudentController {
 	
+	private static final Logger logger = Logger.getLogger(StudentController.class);
+	
 	public StudentController() {
 		System.out.println("Inside StudentController constructor");
 	}
 
 	@RequestMapping(value = "/admissionForm", method = RequestMethod.GET)
 	public ModelAndView getAdmissionForm() {
+		logger.debug("enters getAdmissionForm method");
 		return new ModelAndView("admissionForm");
 	}
 	
 	@RequestMapping(value = "/submitAdmissionForm", method = RequestMethod.POST)
 	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute Student student, BindingResult bindingResult) {
+		logger.debug("enters submitAdmissionForm method");
 		if(bindingResult.hasErrors()) {
 			return new ModelAndView("admissionForm");
 		}
@@ -34,6 +39,7 @@ public class StudentController {
 	}
 	@ModelAttribute
 	public void addCommonCode(Model model) {
+		logger.debug("enters addCommonCode method");
 		model.addAttribute("message", "***Student Details***");
 	}
 }

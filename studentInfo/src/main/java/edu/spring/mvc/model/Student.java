@@ -7,13 +7,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.apache.log4j.Logger;
 import org.hibernate.validator.constraints.Email;
 
 
 public class Student {
 	
+	private static final Logger logger = Logger.getLogger(Student.class);
 	public Student() {
-		System.out.println("Inside Student constructor");
+		logger.debug("enters Student constructor");
 	}
 	
 	@NotNull

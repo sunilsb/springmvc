@@ -5,14 +5,16 @@ import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class DayOfWeekBasedAccessInterceptor extends HandlerInterceptorAdapter {
 
+	private static final Logger logger = Logger.getLogger(DayOfWeekBasedAccessInterceptor.class);
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		System.out.println("Inside preHandle method");
+		logger.debug("enters preHandle method");
 		Calendar cal = Calendar.getInstance();
 		int dayOfWeek = cal.get(cal.DAY_OF_WEEK);
 		if(dayOfWeek == 3){
@@ -25,16 +27,14 @@ public class DayOfWeekBasedAccessInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("postHandle method");
-		// TODO Auto-generated method stub
+		logger.debug("enters postHandle method");
 		super.postHandle(request, response, handler, modelAndView);
 	}
 	@Override
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("After Completion method");
-		// TODO Auto-generated method stub
+		logger.debug("enters afterCompletion method");
 		super.afterCompletion(request, response, handler, ex);
 	}
 }

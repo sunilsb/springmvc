@@ -1,11 +1,19 @@
 package edu.spring.mvc.model;
 
+import org.apache.log4j.Logger;
+
 public class Address {
+	
+	private static final Logger logger = Logger.getLogger(Address.class);
 	
 	private String city;
 	private String state;
 	private String country;
 	private Long pincode;
+	
+	public Address() {
+		logger.debug("enters Address constructor");
+	}
 	
 	public String getCity() {
 		return city;
