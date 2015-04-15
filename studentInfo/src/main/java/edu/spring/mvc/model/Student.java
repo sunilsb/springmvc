@@ -12,6 +12,10 @@ import org.hibernate.validator.constraints.Email;
 
 public class Student {
 	
+	public Student() {
+		System.out.println("Inside Student constructor");
+	}
+	
 	@NotNull
 	private int id;
 	@Size(min = 3, max = 10)
