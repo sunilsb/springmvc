@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.spring.mvc.model.Student;
 
 @Controller
-@RequestMapping(value = "/admission")
+@RequestMapping(value = "/student")
 public class StudentController {
 
 	@RequestMapping(value = "/admissionForm", method = RequestMethod.GET)
