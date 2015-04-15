@@ -15,6 +15,10 @@ import edu.spring.mvc.model.Student;
 @Controller
 @RequestMapping(value = "/student")
 public class StudentController {
+	
+	public StudentController() {
+		System.out.println("Inside StudentController constructor");
+	}
 
 	@RequestMapping(value = "/admissionForm", method = RequestMethod.GET)
 	public ModelAndView getAdmissionForm() {
