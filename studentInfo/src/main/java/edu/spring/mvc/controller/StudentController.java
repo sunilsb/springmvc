@@ -1,4 +1,4 @@
-package edu.spring.edu.controller;
+package edu.spring.mvc.controller;
 
 import javax.validation.Valid;
 
