@@ -22,18 +22,18 @@ public class StudentController {
 	private static final Logger logger = Logger.getLogger(StudentController.class);
 	
 	public StudentController() {
-		System.out.println("Inside StudentController constructor");
+		System.out.println("***Inside StudentController constructor***");
 	}
 
 	@RequestMapping(value = "/admissionForm", method = RequestMethod.GET)
 	public ModelAndView getAdmissionForm() {
-		logger.debug("enters getAdmissionForm method");
+		logger.debug("***enters getAdmissionForm method***");
 		return new ModelAndView("admissionForm");
 	}
 	
 	@RequestMapping(value = "/submitAdmissionForm", method = RequestMethod.POST)
 	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute Student student, BindingResult bindingResult) {
-		logger.debug("enters submitAdmissionForm method");
+		logger.debug("***enters submitAdmissionForm method***");
 		if(bindingResult.hasErrors()) {
 			return new ModelAndView("admissionForm");
 		}
@@ -42,7 +42,7 @@ public class StudentController {
 	
 	@ModelAttribute
 	public void addCommonCode(Model model) {
-		logger.debug("enters addCommonCode method");
+		logger.debug("***enters addCommonCode method***");
 		model.addAttribute("message", "***Student Details***");
 	}
 	
