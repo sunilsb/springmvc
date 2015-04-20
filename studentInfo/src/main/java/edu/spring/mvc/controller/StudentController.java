@@ -1,5 +1,7 @@
 package edu.spring.mvc.controller;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,6 +55,18 @@ public class StudentController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		logger.debug("***enters initBinder method***");
-		binder.setDisallowedFields(new String [] {"dob","mobile"});
+//		binder.setDisallowedFields(new String [] {"dob","mobile"});
+	}
+	
+	@RequestMapping(value = "/greeting/{country}/{name}", method = RequestMethod.GET)
+	public ModelAndView getStudents(@PathVariable Map<String, String> args) {
+		
+		String country = args.get("country");
+		String name = args.get("name");
+		
+		ModelAndView model = new ModelAndView("greeting");
+		model.addObject("msg", "Hello "+ name + " from " + country);
+		
+		return model;
 	}
 }
