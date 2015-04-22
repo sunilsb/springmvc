@@ -22,6 +22,10 @@
 			<td>${student.lastName}
 		</tr>
 		<tr>
+			<td>Student Gender</td>
+			<td>${student.gender}
+		</tr>
+		<tr>
 			<td>Student Email</td>
 			<td>${student.email}
 		</tr>
@@ -34,15 +38,19 @@
 			<td>${student.mobile}
 		</tr>
 		<tr>
+			<td>Student Hobby</td>
+			<td>${student.hobby}
+		</tr>
+		<tr>
 			<td>Student Skill Set</td>
 			<td>${student.skills}
 		</tr>
 		<tr>
 			<td>Student Address</td>
-			<td>City : ${student.address.city}</td>
-			<td>State : ${student.address.state}</td> 
-			<td>Country : ${student.address.country}</td>
-			<td>Pincode : ${student.address.pincode}</td>
+			<td>City : ${student.address.city}<br>
+			State : ${student.address.state}<br>
+			Country : ${student.address.country}<br>
+			Pincode : ${student.address.pincode}</td>
 		</tr>
 
 	</table>

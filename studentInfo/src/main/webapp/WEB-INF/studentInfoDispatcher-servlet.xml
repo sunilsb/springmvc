@@ -13,26 +13,17 @@
 	<context:component-scan base-package="edu.spring.mvc"/>
 	<mvc:annotation-driven/>
 	
-	<mvc:interceptors>
-	
+	<mvc:interceptors>	
 		<mvc:interceptor>
 			<mvc:mapping path="/student/admissionForm"/>
 			<bean class="edu.spring.mvc.interceptor.DayOfWeekBasedAccessInterceptor"/>				
-		</mvc:interceptor>
-		
+		</mvc:interceptor>		
 	</mvc:interceptors>
-	
-	<!-- <bean id="handlerMapping"
-		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
-  Not required with Annotation based configurations -->
-
-	<!-- <bean name="/welcome.html" class="edu.mvc.controller.HelloController"/> 
-		Used when not using Annotations based configurations -->
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
-			<value>/WEB-INF/view/</value>
+			<value>/WEB-INF/views/</value>
 		</property>
 		<property name="suffix">
 			<value>.jsp</value>

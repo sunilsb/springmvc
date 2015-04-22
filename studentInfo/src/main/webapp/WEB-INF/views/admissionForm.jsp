@@ -26,6 +26,11 @@
 				<td><input type="text" name="lastName" /></td>
 			</tr>
 			<tr>
+				<td>Student Gender :</td>
+				<td><input type="radio" name="gender" value="Male">Male<br>
+				<input type="radio" name="gender" value="Female">Female</td>
+			</tr>			
+			<tr>
 				<td>Student Email :</td>
 				<td><input type="text" name="email" /></td>
 			</tr>
@@ -36,6 +41,10 @@
 			<tr>
 				<td>Student Mobile :</td>
 				<td><input type="text" name="mobile" /></td>
+			</tr>
+			<tr>
+				<td>Student Hobby :</td>
+				<td><input type="text" name="hobby" /></td>
 			</tr>
 
 			<tr>

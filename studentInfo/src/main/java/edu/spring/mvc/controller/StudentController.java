@@ -1,21 +1,23 @@
 package edu.spring.mvc.controller;
 
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.spring.mvc.customPropertyEditor.StudentNameEditor;
 import edu.spring.mvc.model.Student;
 
 @Controller
@@ -42,7 +44,7 @@ public class StudentController {
 		}
 		return new ModelAndView("admissionSuccess");
 	}
-	
+
 	@ModelAttribute
 	public void addCommonCode(Model model) {
 		logger.debug("***enters addCommonCode method***");
@@ -56,17 +58,8 @@ public class StudentController {
 	public void initBinder(WebDataBinder binder) {
 		logger.debug("***enters initBinder method***");
 //		binder.setDisallowedFields(new String [] {"dob","mobile"});
-	}
-	
-	@RequestMapping(value = "/greeting/{country}/{name}", method = RequestMethod.GET)
-	public ModelAndView getStudents(@PathVariable Map<String, String> args) {
-		
-		String country = args.get("country");
-		String name = args.get("name");
-		
-		ModelAndView model = new ModelAndView("greeting");
-		model.addObject("msg", "Hello "+ name + " from " + country);
-		
-		return model;
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		binder.registerCustomEditor(Date.class, "dob", new CustomDateEditor(dateFormat, false));
+		binder.registerCustomEditor(String.class, "firstName", new StudentNameEditor());
 	}
 }
